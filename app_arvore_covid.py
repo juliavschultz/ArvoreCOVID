@@ -89,8 +89,21 @@ info_gestante = encoder.fit_transform(pd.DataFrame(dataset['GESTANTE']))
 info_cor = encoder.fit_transform(pd.DataFrame(dataset['RACA_COR']))
 info_srag = encoder.fit_transform(pd.DataFrame(dataset['SRAG']))
 
+
+sexo = list(set(dataset['SEXO'])) 
+faixas_etarias = list(set(dataset['FAIXAETARIA']))
+hospitalizado = list(set(dataset['HOSPITALIZADO'])) 
+febre = list(set(dataset['FEBRE'])) 
+tosse = list(set(dataset['TOSSE']))
+garganta = list(set(dataset['GARGANTA'])) 
+dispneia = list(set(dataset['DISPNEIA'])) 
+gestante = list(set(dataset['GESTANTE'])) 
+cor = list(set(dataset['RACA_COR']))
+srag = list(set(dataset['SRAG'])) 
+
+
 if st.button('Prever evolução'):
-    individuo = [info_sexo.index(sexo), info_idade.index(faisas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(), info_cor.index(cor), info_srag.index(srag)]
+    individuo = [info_sexo.index(sexo), info_idade.index(faixas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(gestante), info_cor.index(cor), info_srag.index(srag)]
    
     predicao = arvore.predict([individuo])
     st.write('a predição de evolução para esse paciente é: '+predicao)
