@@ -10,8 +10,8 @@ Original file is located at
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier 
-from sklearn import metrics
 from sklearn.preprocessing import OrdinalEncoder
+from sklearn import metrics
 
 dataset = pd.read_csv('dados26abril22.csv', sep=';')
 
@@ -61,17 +61,16 @@ info_cor = st.selectbox('Indique a raça/cor do paciente', cor )
 info_srag = st.selectbox('O paciente desenvolveu Sindrome Respiratória Aguda Grave?', srag )
 
 encoder = OrdinalEncoder()
-dataset['SEXO'] = encoder.fit_transform(pd.DataFrame(dataset['SEXO']))
-dataset['FAIXAETARIA'] = encoder.fit_transform(pd.DataFrame(dataset['FAIXAETARIA']))
-dataset['EVOLUCAO'] = encoder.fit_transform(pd.DataFrame(dataset['EVOLUCAO']))
-dataset['HOSPITALIZADO'] = encoder.fit_transform(pd.DataFrame(dataset['HOSPITALIZADO']))
-dataset['FEBRE'] = encoder.fit_transform(pd.DataFrame(dataset['FEBRE']))
-dataset['TOSSE'] = encoder.fit_transform(pd.DataFrame(dataset['TOSSE']))
-dataset['GARGANTA'] = encoder.fit_transform(pd.DataFrame(dataset['GARGANTA']))
-dataset['DISPNEIA'] = encoder.fit_transform(pd.DataFrame(dataset['DISPNEIA']))
-dataset['GESTANTE'] = encoder.fit_transform(pd.DataFrame(dataset['GESTANTE']))
-dataset['RACA_COR'] = encoder.fit_transform(pd.DataFrame(dataset['RACA_COR']))
-dataset['SRAG'] = encoder.fit_transform(pd.DataFrame(dataset['SRAG']))
+info_sexo = encoder.fit_transform(pd.DataFrame(dataset['SEXO']))
+info_idade = encoder.fit_transform(pd.DataFrame(dataset['FAIXAETARIA']))
+info_hospital = encoder.fit_transform(pd.DataFrame(dataset['HOSPITALIZADO']))
+info_febre = encoder.fit_transform(pd.DataFrame(dataset['FEBRE']))
+info_tosse = encoder.fit_transform(pd.DataFrame(dataset['TOSSE']))
+info_garganta = encoder.fit_transform(pd.DataFrame(dataset['GARGANTA']))
+info_dispneia = encoder.fit_transform(pd.DataFrame(dataset['DISPNEIA']))
+info_gestante = encoder.fit_transform(pd.DataFrame(dataset['GESTANTE']))
+info_cor = encoder.fit_transform(pd.DataFrame(dataset['RACA_COR']))
+info_srag = encoder.fit_transform(pd.DataFrame(dataset['SRAG']))
 
 if st.button('Prever evolução'):
     individuo = [info_sexo.index(sexo), info_idade.index(faisas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(), info_cor.index(cor), info_srag.index(srag)]
