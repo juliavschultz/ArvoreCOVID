@@ -41,8 +41,6 @@ dataset['FEBRE'] = encoder.fit_transform(pd.DataFrame(dataset['FEBRE']))
 dataset['TOSSE'] = encoder.fit_transform(pd.DataFrame(dataset['TOSSE']))
 dataset['GARGANTA'] = encoder.fit_transform(pd.DataFrame(dataset['GARGANTA']))
 dataset['DISPNEIA'] = encoder.fit_transform(pd.DataFrame(dataset['DISPNEIA']))
-#dataset['OUTROS'] = encoder.fit_transform(pd.DataFrame(dataset['OUTROS']))
-#dataset['CONDICOES'] = encoder.fit_transform(pd.DataFrame(dataset['CONDICOES']))
 dataset['GESTANTE'] = encoder.fit_transform(pd.DataFrame(dataset['GESTANTE']))
 dataset['RACA_COR'] = encoder.fit_transform(pd.DataFrame(dataset['RACA_COR']))
 dataset['SRAG'] = encoder.fit_transform(pd.DataFrame(dataset['SRAG']))
@@ -74,18 +72,6 @@ info_dispneia = st.selectbox('O paciente tem dispneia (dificuldade para respirar
 info_gestante = st.selectbox('Trata-se de paciente gestante?', gestante )
 info_cor = st.selectbox('Indique a raça/cor do paciente', cor )
 info_srag = st.selectbox('O paciente desenvolveu Sindrome Respiratória Aguda Grave?', srag )
-
-encoder = OrdinalEncoder()
-info_sexo = encoder.fit_transform(pd.DataFrame(dataset['SEXO']))
-info_idade = encoder.fit_transform(pd.DataFrame(dataset['FAIXAETARIA']))
-info_hospital = encoder.fit_transform(pd.DataFrame(dataset['HOSPITALIZADO']))
-info_febre = encoder.fit_transform(pd.DataFrame(dataset['FEBRE']))
-info_tosse = encoder.fit_transform(pd.DataFrame(dataset['TOSSE']))
-info_garganta = encoder.fit_transform(pd.DataFrame(dataset['GARGANTA']))
-info_dispneia = encoder.fit_transform(pd.DataFrame(dataset['DISPNEIA']))
-info_gestante = encoder.fit_transform(pd.DataFrame(dataset['GESTANTE']))
-info_cor = encoder.fit_transform(pd.DataFrame(dataset['RACA_COR']))
-info_srag = encoder.fit_transform(pd.DataFrame(dataset['SRAG']))
 
 
 if st.button('Prever evolução'):
