@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier 
 from sklearn import metrics
 
-dataset = pd.read_csv('totalnumericos.csv', sep=';')
+dataset = pd.read_csv('dados26abril22.csv', sep=';')
 
 nomesClassesED = ['REC','OBT']
 colunas = dataset.columns.to_list()
@@ -59,6 +59,19 @@ info_gestante = st.selectbox('Trata-se de paciente gestante?', gestante )
 info_cor = st.selectbox('Indique a raça/cor do paciente', cor )
 info_srag = st.selectbox('O paciente desenvolveu Sindrome Respiratória Aguda Grave?', srag )
 
+dataset['SEXO'] = encoder.fit_transform(pd.DataFrame(dataset['SEXO']))
+dataset['FAIXAETARIA'] = encoder.fit_transform(pd.DataFrame(dataset['FAIXAETARIA']))
+dataset['EVOLUCAO'] = encoder.fit_transform(pd.DataFrame(dataset['EVOLUCAO']))
+dataset['HOSPITALIZADO'] = encoder.fit_transform(pd.DataFrame(dataset['HOSPITALIZADO']))
+dataset['FEBRE'] = encoder.fit_transform(pd.DataFrame(dataset['FEBRE']))
+dataset['TOSSE'] = encoder.fit_transform(pd.DataFrame(dataset['TOSSE']))
+dataset['GARGANTA'] = encoder.fit_transform(pd.DataFrame(dataset['GARGANTA']))
+dataset['DISPNEIA'] = encoder.fit_transform(pd.DataFrame(dataset['DISPNEIA']))
+#dataset['OUTROS'] = encoder.fit_transform(pd.DataFrame(dataset['OUTROS']))
+#dataset['CONDICOES'] = encoder.fit_transform(pd.DataFrame(dataset['CONDICOES']))
+dataset['GESTANTE'] = encoder.fit_transform(pd.DataFrame(dataset['GESTANTE']))
+dataset['RACA_COR'] = encoder.fit_transform(pd.DataFrame(dataset['RACA_COR']))
+dataset['SRAG'] = encoder.fit_transform(pd.DataFrame(dataset['SRAG']))
 
 if st.button('Prever evolução'):
     individuo = [info_sexo.index(sexo), info_idade.index(faisas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(), info_cor.index(cor), info_srag.index(srag)]
