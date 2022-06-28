@@ -73,7 +73,7 @@ info_gestante = st.selectbox('Trata-se de paciente gestante?', gestante )
 info_cor = st.selectbox('Indique a raça/cor do paciente', cor )
 info_srag = st.selectbox('O paciente desenvolveu Sindrome Respiratória Aguda Grave?', srag )
 
-individuo = [info_sexo.index(sexo), info_idade.index(faixas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(gestante), info_cor.index(cor), info_srag.index(srag)]
+individuo = [sexo.index(info_sexo), faixas_etarias.index(info_idade), hospitalizado.index(info_hospital), febre.index(info_febre), tosse.index(info_tosse), garganta.index(info_garganta), dispneia.index(info_dispneia), gestante.index(info_gestante), cor.index(info_cor), srag.index(info_srag)]
 
 if st.button('Prever evolução'):
  predicao = arvore.predict([individuo])
