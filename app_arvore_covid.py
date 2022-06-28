@@ -16,6 +16,7 @@ from sklearn import metrics
 dataset = pd.read_csv('dados26abril22.csv', sep=';')
 
 nomes_classes = ['Recuperação','Risco de óbito']
+
 sexo = list(set(dataset['SEXO'])) 
 faixas_etarias = list(set(dataset['FAIXAETARIA']))
 hospitalizado = list(set(dataset['HOSPITALIZADO'])) 
@@ -27,7 +28,6 @@ gestante = list(set(dataset['GESTANTE']))
 cor = list(set(dataset['RACA_COR']))
 srag = list(set(dataset['SRAG'])) 
 
-nomesClassesED = ['REC','OBT']
 colunas = dataset.columns.to_list()
 nomesColunas = colunas [1:3]
 nomesColunas = nomesColunas+colunas[4:]
@@ -73,8 +73,8 @@ info_gestante = st.selectbox('Trata-se de paciente gestante?', gestante )
 info_cor = st.selectbox('Indique a raça/cor do paciente', cor )
 info_srag = st.selectbox('O paciente desenvolveu Sindrome Respiratória Aguda Grave?', srag )
 
+individuo = [info_sexo.index(sexo), info_idade.index(faixas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(gestante), info_cor.index(cor), info_srag.index(srag)]
 
 if st.button('Prever evolução'):
- individuo = [info_sexo.index(sexo), info_idade.index(faixas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(gestante), info_cor.index(cor), info_srag.index(srag)]
  predicao = arvore.predict([individuo])
  st.write('a predição de evolução para esse paciente é: '+predicao)
