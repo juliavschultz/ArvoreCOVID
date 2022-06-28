@@ -77,4 +77,4 @@ individuo = [sexo.index(info_sexo), faixas_etarias.index(info_idade), hospitaliz
 
 if st.button('Prever evolução'):
  predicao = arvore.predict([individuo])
- st.write('a predição de evolução para esse paciente é: '+predicao)
+ st.write('a predição de evolução para esse paciente é: '+nomes_classes[int(predicao[0])])
