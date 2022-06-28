@@ -12,8 +12,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier 
 from sklearn import metrics
 
-dataset = pd.read_csv('dados26abril22.csv', sep=';')
+dataset = pd.read_csv('totalnumericos.csv', sep=';')
 
+nomesClassesED = ['REC','OBT']
+colunas = dataset.columns.to_list()
+nomesColunas = colunas [1:3]
+nomesColunas = nomesColunas+colunas[4:]
+
+dataset_features = dataset[nomesColunas]
+dataset_classes = dataset['EVOLUCAO']
 
 feature_treino,feature_teste,classes_treino,classes_teste = train_test_split(dataset_features,
                                                                              dataset_classes,
