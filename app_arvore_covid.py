@@ -101,9 +101,7 @@ gestante = list(set(dataset['GESTANTE']))
 cor = list(set(dataset['RACA_COR']))
 srag = list(set(dataset['SRAG'])) 
 
-
 if st.button('Prever evolução'):
-    individuo = [info_sexo.index(sexo), info_idade.index(faixas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(gestante), info_cor.index(cor), info_srag.index(srag)]
-   
-    predicao = arvore.predict([individuo])
-    st.write('a predição de evolução para esse paciente é: '+predicao)
+	individuo = [info_sexo.index(sexo), info_idade.index(faixas_etarias), info_hospital.index(hospitalizado), info_febre.index(febre), info_tosse.index(tosse), info_garganta.index(garganta), info_dispneia.index(dispneia), info_gestante.index(gestante), info_cor.index(cor), info_srag.index(srag)]
+    	predicao = arvore.predict([individuo])
+    	st.write('a predição de evolução para esse paciente é: '+predicao)
