@@ -15,10 +15,37 @@ from sklearn import metrics
 
 dataset = pd.read_csv('dados26abril22.csv', sep=';')
 
+nomes_classes = ['Recuperação','Risco de óbito']
+sexo = list(set(dataset['SEXO'])) 
+faixas_etarias = list(set(dataset['FAIXAETARIA']))
+hospitalizado = list(set(dataset['HOSPITALIZADO'])) 
+febre = list(set(dataset['FEBRE'])) 
+tosse = list(set(dataset['TOSSE']))
+garganta = list(set(dataset['GARGANTA'])) 
+dispneia = list(set(dataset['DISPNEIA'])) 
+gestante = list(set(dataset['GESTANTE'])) 
+cor = list(set(dataset['RACA_COR']))
+srag = list(set(dataset['SRAG'])) 
+
 nomesClassesED = ['REC','OBT']
 colunas = dataset.columns.to_list()
 nomesColunas = colunas [1:3]
 nomesColunas = nomesColunas+colunas[4:]
+
+encoder = OrdinalEncoder()
+dataset['SEXO'] = encoder.fit_transform(pd.DataFrame(dataset['SEXO']))
+dataset['FAIXAETARIA'] = encoder.fit_transform(pd.DataFrame(dataset['FAIXAETARIA']))
+dataset['EVOLUCAO'] = encoder.fit_transform(pd.DataFrame(dataset['EVOLUCAO']))
+dataset['HOSPITALIZADO'] = encoder.fit_transform(pd.DataFrame(dataset['HOSPITALIZADO']))
+dataset['FEBRE'] = encoder.fit_transform(pd.DataFrame(dataset['FEBRE']))
+dataset['TOSSE'] = encoder.fit_transform(pd.DataFrame(dataset['TOSSE']))
+dataset['GARGANTA'] = encoder.fit_transform(pd.DataFrame(dataset['GARGANTA']))
+dataset['DISPNEIA'] = encoder.fit_transform(pd.DataFrame(dataset['DISPNEIA']))
+#dataset['OUTROS'] = encoder.fit_transform(pd.DataFrame(dataset['OUTROS']))
+#dataset['CONDICOES'] = encoder.fit_transform(pd.DataFrame(dataset['CONDICOES']))
+dataset['GESTANTE'] = encoder.fit_transform(pd.DataFrame(dataset['GESTANTE']))
+dataset['RACA_COR'] = encoder.fit_transform(pd.DataFrame(dataset['RACA_COR']))
+dataset['SRAG'] = encoder.fit_transform(pd.DataFrame(dataset['SRAG']))
 
 dataset_features = dataset[nomesColunas]
 dataset_classes = dataset['EVOLUCAO']
@@ -37,17 +64,7 @@ arvore.fit(feature_treino,classes_treino)
 #entrada de dados
 import streamlit as st
 
-nomes_classes = ['Recuperação','Risco de óbito']
-sexo = list(set(dataset['SEXO'])) 
-faixas_etarias = list(set(dataset['FAIXAETARIA']))
-hospitalizado = list(set(dataset['HOSPITALIZADO'])) 
-febre = list(set(dataset['FEBRE'])) 
-tosse = list(set(dataset['TOSSE']))
-garganta = list(set(dataset['GARGANTA'])) 
-dispneia = list(set(dataset['DISPNEIA'])) 
-gestante = list(set(dataset['GESTANTE'])) 
-cor = list(set(dataset['RACA_COR']))
-srag = list(set(dataset['SRAG'])) 
+
  
 info_sexo = st.selectbox('Escolha o sexo do paciente', sexo)
 info_idade = st.selectbox('Escolha a idade do paciente', faixas_etarias)
