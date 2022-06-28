@@ -64,8 +64,6 @@ arvore.fit(feature_treino,classes_treino)
 #entrada de dados
 import streamlit as st
 
-
- 
 info_sexo = st.selectbox('Escolha o sexo do paciente', sexo)
 info_idade = st.selectbox('Escolha a idade do paciente', faixas_etarias)
 info_hospital = st.selectbox('O paciente foi hospitalizado?', hospitalizado  )
@@ -76,18 +74,6 @@ info_dispneia = st.selectbox('O paciente tem dispneia (dificuldade para respirar
 info_gestante = st.selectbox('Trata-se de paciente gestante?', gestante )
 info_cor = st.selectbox('Indique a raça/cor do paciente', cor )
 info_srag = st.selectbox('O paciente desenvolveu Sindrome Respiratória Aguda Grave?', srag )
-
-
-sexo = list(set(dataset['SEXO'])) 
-faixas_etarias = list(set(dataset['FAIXAETARIA']))
-hospitalizado = list(set(dataset['HOSPITALIZADO'])) 
-febre = list(set(dataset['FEBRE'])) 
-tosse = list(set(dataset['TOSSE']))
-garganta = list(set(dataset['GARGANTA'])) 
-dispneia = list(set(dataset['DISPNEIA'])) 
-gestante = list(set(dataset['GESTANTE'])) 
-cor = list(set(dataset['RACA_COR']))
-srag = list(set(dataset['SRAG']))
 
 encoder = OrdinalEncoder()
 info_sexo = encoder.fit_transform(pd.DataFrame(dataset['SEXO']))
