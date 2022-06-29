@@ -6,7 +6,7 @@
 	width:100%;
 }
 
-.stButton > button:hover {
+.stButton > button:focus {
 	color: #000080;
 	background-color: #000080
 	font-size:20px;
