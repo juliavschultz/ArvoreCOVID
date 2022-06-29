@@ -62,6 +62,12 @@ arvore.fit(feature_treino,classes_treino)
 #entrada de dados
 import streamlit as st
 
+
+st.title('Modelo de Predição de Evolução da COVID-19 em pacientes')
+st.write('Esse projeto utiliza o modelo de árvore de decisão para estudo da base de dados de casos confirmados para COVID-19 da Secretaria de Saúde do RS')
+st.write('Projeto vinculado à Universidade Franciscana')
+st.write('Projeto vinculado à CAPES')
+
 info_sexo = st.selectbox('Escolha o sexo do paciente', sexo)
 info_idade = st.selectbox('Escolha a idade do paciente', faixas_etarias)
 info_hospital = st.selectbox('O paciente foi hospitalizado?', hospitalizado  )
