@@ -62,7 +62,6 @@ arvore.fit(feature_treino,classes_treino)
 #entrada de dados
 import streamlit as st
 
-st.image('logo.png.png', format='PNG')
 st.title('Modelo de Predição de Evolução da COVID-19 em pacientes')
 st.subheader('Esse projeto utiliza o modelo de árvore de decisão para estudo da base de dados de casos confirmados para COVID-19 da Secretaria de Saúde do RS')
 st.write('Projeto vinculado à Universidade Franciscana')
