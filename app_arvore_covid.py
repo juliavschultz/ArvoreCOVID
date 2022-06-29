@@ -65,8 +65,6 @@ import streamlit as st
 with open("style.css") as f:
 	st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
-	st.markdown("<title style='text-align: center; color: red;'>Some title</title>", unsafe_allow_html=True)
-
 st.title('Modelo de Predição de Evolução da COVID-19 em pacientes')
 st.subheader('Esse projeto utiliza o modelo de árvore de decisão para estudo da base de dados de casos confirmados para COVID-19 da Secretaria de Saúde do RS')
 st.write('Projeto vinculado à Universidade Franciscana | Pós-graduação em Nanociências | CAPES')
